@@ -1,0 +1,32 @@
+ - A hierarquia do projeto multiplicador Shift & ADD está presente nesta pasta.
+ - A hierarquia TOP, Multiplicador, deve ser implementada na pasta raíz, Multiplicador.
+ - Cada um dos blocos que o compõe estão em suas devidas pastas, que são subpastas da pasta Multiplicador.
+ A hierarquia final, a ser zipada e enviada, ficará na seguinte forma:
+ 
+ |-> Multiplicador
+ |	|-> Multiplicador.qpf
+ |	|-> Multiplicador.qsf
+ |	|-> Multiplicador.v
+ |	|-> Multiplicador_TB.v
+ |	|-> ACC
+ |	|	|-> ACC.qpf 	
+ |	|	|-> ACC.qsf
+ |	|	|-> ACC.v
+ |	|	|-> ACC_TB.v  
+ |	|-> Adder
+ |	|	|-> Adder.qpf 	
+ |	|	|-> Adder.qsf
+ |	|	|-> Adder.v
+ |	|	|-> Adder.v  
+ |	|-> CONTROL
+ |	|	|-> CONTROL.qpf 	
+ |	|	|-> CONTROL.qsf
+ |	|	|-> CONTROL.v
+ |	|	|-> CONTROL.v  
+ |	|-> Counter
+ |	|	|-> Counter.qpf 	
+ |	|	|-> Counter.qsf
+ |	|	|-> Counter.v
+ |	|	|-> Counter.v 
+ 
+ - Apenas os ports de cada um destes blocos estão implementados. O funcionamento de cada um deles será implementado no laboaratório 4 (seguir o fluxograma ASM e o diagrama de estados apresentados no roteiro 4). No laboaratório 3, para praticarem a abordagem descendente de projeto, vocês deverão criar a hierarquia TOP, nosso Multiplicador, através de uma descrição estrutural que interconecte cada um dos blocos. Seguir o desenho esquemático apresentado no Guia 3.

@@ -24,40 +24,41 @@ module mealy_uart_tb;
 
   initial begin
     clk = 0;
-    rst = 0;
-    #3 rst = 1;
-    #5 rst = 0;
-  end
-
-  initial begin
-    // Inicializa entradas
-    Load_XMT_datareg = 0;
+    rst = 1;
     Byte_ready = 0;
     T_byte = 0;
     BC_lt_BCMax = 0;
+    Load_XMT_datareg = 0;
 
-    // Estímulos para Load_XMT_datareg
+    // Reset ativo por 10 unidades
+    #10 rst = 0;
+
+    // ==== Transmissão 1 ====
     #10 Load_XMT_datareg = 1;
     #10 Load_XMT_datareg = 0;
 
-    // Estímulos para Byte_ready
-    #5 Byte_ready = 1;
+    #10 Byte_ready = 1;
     #10 Byte_ready = 0;
 
-    // Estímulos para T_byte
-    #15 T_byte = 1;
+    #10 T_byte = 1;
     #10 T_byte = 0;
 
-    // Estímulos para BC_lt_BCMax
     #10 BC_lt_BCMax = 1;
     #20 BC_lt_BCMax = 0;
 
-    #30 $stop;
-  end
+    // ==== Transmissão 2 ====
+    #20 Load_XMT_datareg = 1;
+    #10 Load_XMT_datareg = 0;
 
-  initial begin
-    $dumpfile("mealy_uart_tb.vcd");
-    $dumpvars(0, mealy_uart_tb);
-  end
+    #10 Byte_ready = 1;
+    #10 Byte_ready = 0;
 
+    #10 T_byte = 1;
+    #10 T_byte = 0;
+
+    #10 BC_lt_BCMax = 1;
+    #20 BC_lt_BCMax = 0;
+
+    #20 $stop;
+  end
 endmodule
