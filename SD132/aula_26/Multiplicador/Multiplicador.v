@@ -1,47 +1,54 @@
-module Multiplicador(
-	input [3:0] Multiplicando, 
-	input [3:0] Multiplicador,
-	input St, Clk, rst,
-	output [7:0] Produto,
-	output Idle, Done
+module Multiplicador #(parameter DATA_LENGTH = 4) (
+    input  [DATA_LENGTH-1:0] Multiplicando, Multiplicador,
+    input  St, Clk, rst,
+    output [(DATA_LENGTH*2)-1:0] Produto,
+    output Idle, Done
 );
 
 wire Load, Sh, Ad, K, M;
+wire [DATA_LENGTH:0] soma;
+wire [DATA_LENGTH-1:0] operandoB;
+wire [(DATA_LENGTH*2):0] resultado;
 
-Adder adder (
-	.OperandoA(), 
-	.OperandoB(),
-	.Soma()
+assign M = resultado[0];
+assign operandoB = resultado[(DATA_LENGTH*2)-1 : DATA_LENGTH];
+
+CONTROL control (
+    .Idle(Idle),
+    .Done(Done),
+    .St(St),
+    .Load(Load),
+    .Sh(Sh),
+    .Ad(Ad),
+    .Clk(Clk),
+    .k(K),
+    .M(M),
+    .rst(rst)
 );
 
-ACC acc(
-	.Load(), 
+ACC #(DATA_LENGTH) acc (
+    .Saidas(resultado),
+    .Entradas({soma, Multiplicador}),
+    .Load(Load),
+    .Sh(Sh),
+    .Ad(Ad),
+    .Clk(Clk),
+    .rst(rst)
+);
+
+Adder #(DATA_LENGTH) adder (
+    .OperandoA(Multiplicando),
+    .OperandoB(operandoB),
+    .Soma(soma)
+);
+
+Counter #(DATA_LENGTH) counter (
+    .Load(Load),
     .rst(rst),
-	.Sh(), 
-	.Ad(), 
-	.Clk(), 
-	.Entradas(),
-	.Saidas()
+    .Clk(Clk),
+    .K(K)
 );
 
-CONTROL control(
-	.Clk(), 
-    .rst(rst),
-	.K(), 
-	.St(), 
-	.M(),
-	.Idle(), 
-	.Done(), 
-	.Load(), 
-	.Sh(),
-	.Ad()
-);
-
-Counter counter(
-	.Load(),
-    .rst(rst),
-	.Clk(),
-	.K()
-);
+assign Produto = resultado[(DATA_LENGTH*2)-1 : 0];
 
 endmodule

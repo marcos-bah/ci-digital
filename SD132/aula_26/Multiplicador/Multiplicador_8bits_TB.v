@@ -1,5 +1,5 @@
-module Multiplicador_TB();
-parameter DATA_LENGTH = 4;
+module Multiplicador_8bits_TB();
+parameter DATA_LENGTH = 8;
 
 reg St, Clk, rst;
 reg [DATA_LENGTH-1:0] Multiplicando, Multiplicador;
@@ -29,8 +29,8 @@ initial begin
     #10 rst = 0;
     test = 1;
 
-    for (i = 0; i < 2**DATA_LENGTH; i = i + 1) begin
-        for (j = 0; j < 2**DATA_LENGTH; j = j + 1) begin
+    for (i = 0; i < 2**4; i = i + 1) begin
+        for (j = 0; j < 2**4; j = j + 1) begin
             Multiplicando = i;
             Multiplicador = j;
             St = 1;
