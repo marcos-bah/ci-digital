@@ -3,14 +3,14 @@ module register_file #(
     parameter ADDR_WIDTH = 2,
     parameter REG_COUNT  = 4
 )(
-    input  wire clk,
-    input  wire wr_en,
-    input  wire [ADDR_WIDTH-1:0]  wr_addr,
-    input  wire [DATA_WIDTH-1:0]  wr_data,
-    input  wire [ADDR_WIDTH-1:0]  rd_addr1,
-    input  wire [ADDR_WIDTH-1:0]  rd_addr2,
-    output wire [DATA_WIDTH-1:0]  rd_data1,
-    output wire [DATA_WIDTH-1:0]  rd_data2,
+    input  clk,
+    input  wr_en,
+    input  [ADDR_WIDTH-1:0]  wr_addr,
+    input  [DATA_WIDTH-1:0]  wr_data,
+    input  [ADDR_WIDTH-1:0]  rd_addr1,
+    input  [ADDR_WIDTH-1:0]  rd_addr2,
+    output [DATA_WIDTH-1:0]  rd_data1,
+    output [DATA_WIDTH-1:0]  rd_data2,
     output reg                    wr_ack
 );
 
