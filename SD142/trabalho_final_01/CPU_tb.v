@@ -23,7 +23,7 @@ module CPU_tb();
     #20 reset = 0;
 
     // Roda a simulação por um tempo
-    #500;
+    #1500;
 
     $stop;
   end

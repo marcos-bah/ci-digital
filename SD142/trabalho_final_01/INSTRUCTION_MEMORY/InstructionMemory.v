@@ -3,13 +3,13 @@ module InstructionMemory(
 			  output [31:0] RD
 	);
 
-  reg [31:0] 				I_MEM_BLOCK[63:0];
+  reg [31:0] 				I_MEM_BLOCK[65535:0];
 
    initial
      begin
-	$readmemh("/home/aluno/Downloads/instructions.txt",I_MEM_BLOCK);
+	$readmemh("/home/cidigital/Documentos/instructions.txt",I_MEM_BLOCK);
 	  end
 
-   assign RD = I_MEM_BLOCK[A[31:2]]; // word aligned
+   assign RD = I_MEM_BLOCK[A[31:2] - 32'h400]; // word aligned
 
 endmodule

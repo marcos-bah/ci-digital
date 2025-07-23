@@ -7,7 +7,7 @@ module PC (
 
    always@(posedge clk or posedge reset)
      begin
-	if (reset) PCReg <= 0;
+	if (reset) PCReg <= 32'h1000;
 	else PCReg <= PCNext;
      end	
 

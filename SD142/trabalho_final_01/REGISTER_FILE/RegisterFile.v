@@ -15,10 +15,16 @@ module RegisterFile(
             // Zera todos os registradores na borda de subida do clock se reset = 1
             for (i = 0; i < 32; i = i + 1)
                 REG_MEM_BLOCK[i] <= 32'b0;
+
         end else if (WE3 && WA3 != 0) begin
             // Escreve apenas se WE3 ativo e não for registrador x0
             REG_MEM_BLOCK[WA3] <= WD3;
         end
+    end
+
+    initial begin
+        REG_MEM_BLOCK[5] = 32'd6;
+        REG_MEM_BLOCK[9] = 32'h1000;
     end
 
     // Leitura assíncrona
