@@ -22,9 +22,10 @@ module CPU_tb();
     reset = 1;
     #20 reset = 0;
 
-    // Roda a simulação por um tempo
-    #1500;
-
+    // Roda a simulação por um tempo máximo (ex: 2000 unidades)
+    #2000;
+    
+    $display("FALHOU: Não encontrou a escrita correta no tempo esperado");
     $stop;
   end
 
@@ -36,7 +37,7 @@ module CPU_tb();
         $stop;
       end else begin
         $display("FALHOU: Dados incorretos. Addr: %0d, Dado: %0d", DataAddr, WriteData);
-        //$stop;
+        //$stop; // Opcional: comentar para continuar rodando até encontrar certo ou timeout
       end
     end
   end

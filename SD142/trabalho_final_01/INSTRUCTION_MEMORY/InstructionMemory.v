@@ -7,7 +7,7 @@ module InstructionMemory(
 
    initial
      begin
-	$readmemh("/home/cidigital/Documentos/instructions.txt",I_MEM_BLOCK);
+	$readmemh("/home/aluno/Documentos/instructions.txt",I_MEM_BLOCK);
 	  end
 
    assign RD = I_MEM_BLOCK[A[31:2] - 32'h400]; // word aligned
