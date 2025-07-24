@@ -1,4 +1,4 @@
-module CPU(
+module cpu(
 			input 	      clk,reset,
 			output [31:0] WriteData,DataAddr,
 			output 	      MemWrite
@@ -16,11 +16,11 @@ module CPU(
 			       .ALUResult(DataAddr),
 			       .WriteData(WriteData) );
 
-   InstructionMemory InstrMemory ( 
+	instruction_memory InstrMemory ( 
 				     .A(PC),
 				     .RD(Instr) );
 
-   DataMemory DataMemory (
+	data_memory DataMemory (
 			    .clk(clk), 
 			    .WE(MemWrite),
 			    .A(DataAddr), 

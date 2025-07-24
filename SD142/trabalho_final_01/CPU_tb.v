@@ -1,4 +1,4 @@
-module CPU_tb();
+module cpu_tb();
 
   reg clk, reset;
   wire [31:0] WriteData, DataAddr;
@@ -8,7 +8,7 @@ module CPU_tb();
   always #10 clk = ~clk;
 
   // Instância da CPU
-  CPU DUT (
+  cpu DUT (
     .clk(clk),
     .reset(reset),
     .WriteData(WriteData),

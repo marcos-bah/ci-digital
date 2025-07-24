@@ -11,7 +11,7 @@ module SingleCycleCore(
    wire [1:0] 				    ResultSrc,ImmSrc;
    wire [3:0] 				    ALUControl;
 
-   ControlUnit Control(
+   control Control(
 			.op(Instr[6:0]),
 			.funct3(Instr[14:12]),
 			.funct7b5(Instr[30]),
@@ -26,7 +26,7 @@ module SingleCycleCore(
 			.ALUControl(ALUControl)
 			);
 
-   Datapath Datapath(
+	datapath Datapath(
 			  .clk(clk),
 			  .reset(reset),
 			  .ResultSrc(ResultSrc),

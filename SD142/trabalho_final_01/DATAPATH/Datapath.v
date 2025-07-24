@@ -1,4 +1,4 @@
-module Datapath(
+module datapath(
 		     input	   clk,reset,
 		     input [1:0]   ResultSrc,
 		     input	   PCSrc,ALUSrc,
@@ -43,7 +43,7 @@ module Datapath(
 		     .PC_Next(PCnext)
 		     );
 
-   RegisterFile Register_inst(
+			 register_file Register_inst(
 			       .clk(clk),
 			       .WE3(RegWrite),
 			       .RA1(Instr[19:15]),
@@ -66,7 +66,7 @@ module Datapath(
 			.ALUSrc(ALUSrc),
 			.B(SrcB)
 			);
-   ALU ALU_inst(
+   alu ALU_inst(
 		.A(SrcA),
 		.B(SrcB),
 		.ALUControl(ALUControl),

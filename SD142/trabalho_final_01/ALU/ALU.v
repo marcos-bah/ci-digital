@@ -1,4 +1,4 @@
-module ALU(
+module alu(
 	   input wire signed [31:0]  A,B, // made it signed for sra to work
 	   input wire signed [3:0]   ALUControl,
 	   output wire signed	      Zero,
